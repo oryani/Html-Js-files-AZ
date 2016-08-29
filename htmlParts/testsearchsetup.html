@@ -1,0 +1,83 @@
+<section>
+    <div class="container-fluid">
+        <div class="spacer35"></div>
+        <h2>
+           Test Result Search Setup
+        </h2>
+        <div class="clearfix"></div>
+        <div class="spacer35"></div> 
+            
+        <form class="form-horizontal" name="searchSetupform" novalidate role="form">
+            
+            <div class="row">
+                <div class="col-sm-4">
+                    
+                    <fieldset>
+                        <div id = "myboxV3">
+                            <legend class="smallegend">Enter List of Compounds</legend>
+                            <label class="initialcapital control-label required">Compound Names:</label>
+                            <textarea name = "Compound Names" style="height:70%; width:90%; overflow:scroll;" ng-model="compoundsTextArea" ng-id="textareaID"  ng-required="true" ng-list="&#10;" ng-trim="false"> </textarea>
+                        </div>			
+                    </fieldset>
+                    <div class="spacer30"></div>
+                    <fieldset>
+                        <div id = "myboxV3">
+                            <legend class="smallegend">Poten assay</legend>
+                            <textarea name = "Poten Assay" style="height:80%; width:90%; overflow:scroll;" ng-model="PotenTextArea" ng-id="potenareaID"  ng-list="&#10;" ng-trim="false"> </textarea>
+                        </div>			
+                    </fieldset> 
+                </div>
+                    
+                <div class="col-sm-4">
+                    <fieldset>
+                        <div id = "myboxV1">
+                            <legend class="smallegend">Select IB Tests</legend>
+                            <div>
+                                <div ng-repeat="testPerMethod in testToFilter() | filter:filterMethods">
+                                    <label class="control-label">{{testPerMethod.testMethod.etestMethod}}</label>
+                                    <ul>
+                                        <div ng-repeat="test in limitedTestList | filter:{testMethod: testPerMethod.testMethod} | orderBy : 'testName'">
+                                            <label class="checkbox-inline"> 
+                                                <input type="checkbox" ng-value="test.testName"  ng-model="sessionSelectedTest" ng-checked="true" ng-click="toggleSelectionF(test)" name="myName{{$parent.$index}}" />{{test.testName}}</label>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>			
+                    </fieldset>
+                </div>
+                <div class="col-sm-4">
+                    <div class="row">
+                        <div class="spacer60"></div>
+                        <fieldset>
+                            <label class="initialcapital col-sm-6 control-label required">Session User:   </label>
+                                
+                            <div class="col-sm-6">
+                                <input name = "Session User" type="text" ng-model="sessionUser" ng-required = "true" class="form-control">
+                            </div>      
+                        </fieldset>
+                    </div> 
+                    <div class="row">
+                        <div class="spacer60"></div>
+                        <fieldset>
+                            <label class="initialcapital col-sm-6 control-label required">Session Name:</label>
+                            <div class="col-sm-6">
+                                <input name = "Session Name" type="text" ng-model="sessionName" ng-required = "true" class="form-control">
+                            </div>      
+                        </fieldset>
+                    </div> 
+                    <div class="row">
+                        <div class="spacer60"></div>
+                        <div class="col-sm-2">
+                        </div>        
+                        <div id = "myboxTSbutton">
+                            <input type="button" class="btn btn-success savebutton" value="Search / New Session" ng-click="searchSetup()" ng-disabled="isDisabled" />
+                            <div class="spacer10"></div>
+                            <img ng-show="isLoading" src="img/preloader2.gif" width="150" height="15"/>
+                        </div>
+                    </div>    
+                </div> 
+            </div> 
+        </form>
+    </div>
+</section>

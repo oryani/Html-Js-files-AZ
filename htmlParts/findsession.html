@@ -1,0 +1,61 @@
+<section ng-controller="findsessionCtrl">
+    <div class="container-fluid">
+        <div class="spacer35"></div>
+        <h2>
+            Find Session
+        </h2>
+        <div class="clearfix"></div>
+            
+        <div class="row">
+            
+            <div class="spacer60"></div>
+            <div class="col-lg-8">
+                <table ng-show="true" class="table table-condensed table-bordered table-striped table-hover table-responsive">
+                    <thead id="headers">
+                        <tr>
+                            <th>Action</th>
+                            <th>Session Id <br><input ng-model="myFilter.id"></th>
+                            <th>Session Name<br><input ng-model="myFilter.sessionName"></th>
+                            <th>Session User <br><input ng-model="myFilter.sessionUser"></th>
+                            <th>Date Created<br><input ng-model="dateFilter.created"></th>
+<!--                            <th>Date Updated<br><input ng-model="dateFilter.updated"></th>-->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="s in sessionList | filter:myFilter | filter:dateFilter | orderBy : 'created'" >
+                            
+                            <td data-title="'Actions'">
+                                <div class="dropdown">
+                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#/testresult/{{s.id}}">Open Session</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="" ng-click="confirmSessionDeletion(s)">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                                
+                            <td>
+                                <a>{{s.id}}</a>
+                            </td>
+                            <td>
+                                <p>{{s.sessionName}}</p>
+                            </td>
+                                
+                            <td>
+                                <p>{{s.sessionUser}}</p>
+                            </td>
+                            <td>
+                               <p ng-bind="s.created | date:'yyyy-MM-dd'"></p>
+                            </td>
+<!--                            <td>
+                                <p ng-bind="s.updated | date:'yyyy-MM-dd'"></p>
+                            </td>-->
+                                
+                        </tr>
+                            
+                    </tbody>
+                </table> 
+            </div>
+        </div>
+    </div>
+</section>

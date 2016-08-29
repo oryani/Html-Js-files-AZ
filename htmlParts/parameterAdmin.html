@@ -1,0 +1,69 @@
+<section ng-controller="parameterAdminCtrl">
+    <div class="container-fluid">
+        <div class="spacer5"></div>
+        <h2>
+            Parameter Administration
+        </h2>
+        <div class="clearfix"></div>
+        <div class="spacer5"></div>   
+        
+        <form name="listofParameters" novalidate>
+            <fieldset>
+                <legend class="smallegend">Edit Parameters</legend>
+                <div class="row" ng-show="true">
+                    <div class="col-sm-6">
+                        <table class="table table-condensed table-responsive table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Parameter Name</th>
+                                    <th>Parameter Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>SFhl</td> 
+                                    <td><input ng-model="parameterDefault.SFhl" class="form-control"></td>  
+                                </tr>
+                                <tr>
+                                    <td>SFhe</td> 
+                                    <td><input ng-model="parameterDefault.SFhe" class="form-control"></td>  
+                                </tr>
+                                <tr>
+                                    <td>Qhum</td> 
+                                    <td><input ng-model="parameterDefault.qhum" class="form-control"></td>  
+                                </tr>
+                                <tr>
+                                    <td>Qr</td> 
+                                    <td><input ng-model="parameterDefault.qr" class="form-control"></td>  
+                                </tr>
+                                <tr>
+                                    <td>Qdo</td> 
+                                    <td><input ng-model="parameterDefault.qdo" class="form-control"></td>  
+                                </tr>
+                                <tr>
+                                    <td>Qmou</td> 
+                                    <td><input ng-model="parameterDefault.qmou" class="form-control"></td>  
+                                </tr>
+                                <tr>
+                                    <td>VpR</td> 
+                                    <td><input ng-model="parameterDefault.vpR" class="form-control"></td>  
+                                </tr>
+                                <tr>
+                                    <td>VpMon</td> 
+                                    <td><input ng-model="parameterDefault.vpMon" class="form-control"></td>  
+                                </tr>
+                                <tr>
+                                    <td>VpDo</td> 
+                                    <td><input ng-model="parameterDefault.vpDo" class="form-control"></td>  
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-success pull-right" ng-click="updateParamDef()">Update Default Parameters</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</section>
